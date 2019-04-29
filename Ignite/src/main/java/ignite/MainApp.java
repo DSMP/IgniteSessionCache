@@ -1,4 +1,4 @@
-package OpencvJavaGroup;
+package ignite;
 
 import org.apache.ignite.Ignite;
 import org.apache.ignite.Ignition;
