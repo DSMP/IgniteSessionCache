@@ -20,23 +20,6 @@ public class IgniteConfigurationBeans {
         IgniteConfiguration igniteConfiguration = new IgniteConfiguration();
         igniteConfiguration.setPeerClassLoadingEnabled(false);
 
-        igniteConfiguration.setIncludeEventTypes(
-                org.apache.ignite.events.EventType.EVT_TASK_STARTED,
-                org.apache.ignite.events.EventType.EVT_TASK_FINISHED,
-                org.apache.ignite.events.EventType.EVT_TASK_FAILED,
-                org.apache.ignite.events.EventType.EVT_TASK_TIMEDOUT,
-                org.apache.ignite.events.EventType.EVT_TASK_SESSION_ATTR_SET,
-                org.apache.ignite.events.EventType.EVT_TASK_REDUCED,
-                org.apache.ignite.events.EventType.EVT_CACHE_OBJECT_PUT,
-                org.apache.ignite.events.EventType.EVT_CACHE_OBJECT_READ,
-                org.apache.ignite.events.EventType.EVT_CACHE_OBJECT_REMOVED);
-
-        TcpDiscoveryMulticastIpFinder tcpDiscoveryMulticastIpFinder = new TcpDiscoveryMulticastIpFinder();
-        tcpDiscoveryMulticastIpFinder.setAddresses(Collections.singletonList("127.0.0.1:47500..47509"));
-        TcpDiscoverySpi tcpDiscoverySpi = new TcpDiscoverySpi();
-        tcpDiscoverySpi.setIpFinder(tcpDiscoveryMulticastIpFinder);
-        igniteConfiguration.setDiscoverySpi(tcpDiscoverySpi);
-
         CacheConfiguration cacheConfiguration = new CacheConfiguration();
         cacheConfiguration.setName("session-cache");
         cacheConfiguration.setCacheMode(CacheMode.REPLICATED);
